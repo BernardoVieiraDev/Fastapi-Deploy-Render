@@ -1,0 +1,29 @@
+[project]
+name = "dio-blog"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "BernardoVieiraDev",email = "bernardovdev@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "databases[aiosqlite] (>=0.9.0,<0.10.0)",
+    "pyjwt (==1.7.1)",
+    "pytest-asyncio",
+    "pytest",
+    "httpx",
+    "pytest-mock",
+    "pydantic (>=2.12.3,<3.0.0)",
+    "pydantic-settings (>=2.11.0,<3.0.0)"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
