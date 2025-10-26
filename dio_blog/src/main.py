@@ -1,7 +1,7 @@
 
 from contextlib import asynccontextmanager
 
-from controllers import post, auth
+from .controllers import post, auth
 from database import database, engine, metadata
 from fastapi import FastAPI
 
