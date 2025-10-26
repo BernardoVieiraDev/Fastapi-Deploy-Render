@@ -1,9 +1,7 @@
-
-from database import database
 from fastapi import APIRouter, Depends, FastAPI, status
 from src.models.post import posts
-from src.security import login_required
 from src.schemas.post import PostIn, PostUpdateIn
+from src.security import login_required
 from src.services.post import PostService
 from src.views.post import PostOut
 
