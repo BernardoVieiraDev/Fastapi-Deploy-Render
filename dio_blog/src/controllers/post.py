@@ -1,5 +1,5 @@
 
-from src.database import database
+from database import database
 from fastapi import APIRouter, Depends, FastAPI, status
 from src.models.post import posts
 from src.security import login_required
