@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from src.security import sign_jwt, TokenResponse  # importa o gerador de token e modelo de resposta
+from .security import sign_jwt, TokenResponse  # importa o gerador de token e modelo de resposta
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
