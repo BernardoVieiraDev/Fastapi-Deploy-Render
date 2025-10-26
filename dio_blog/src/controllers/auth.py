@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from security import sign_jwt, TokenResponse
+from src.security import sign_jwt, TokenResponse
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
