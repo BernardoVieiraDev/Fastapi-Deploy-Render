@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from security import AccessToken
+from src.security import AccessToken
 
 class LoginIn(BaseModel):
     user_id : int
