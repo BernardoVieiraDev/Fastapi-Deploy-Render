@@ -1,0 +1,38 @@
+# Arquivo: render.yaml
+# Define a infraestrutura do seu serviço no Render
+
+services:
+  - type: web
+    # Nome do seu serviço (usando o nome do projeto 'dio-blog' do pyproject.toml)
+    name: dio-blog
+    env: python
+    plan: free # Plano de hospedagem
+    region: oregon # Região, pode alterar para uma mais próxima de você, como 'frankfurt'
+
+    # Build Command: Instala o Poetry e depois as dependências do projeto
+    # O Render detecta automaticamente o Poetry, mas este comando é mais explícito.
+    buildCommand: |
+      pip install poetry
+      poetry install --no-root
+
+    # Start Command: Inicia o servidor ASGI (Uvicorn)
+    # O formato é: uvicorn <nome_do_modulo>:<instancia_do_app> --host 0.0.0.0 --port $PORT
+    # O módulo principal é 'src.main' e a instância do app é 'app'.
+    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+
+    # Variáveis de Ambiente
+    envVars:
+      # Define a versão do Python. Seu pyproject.toml requer >=3.13.
+      - key: PYTHON_VERSION
+        value: 3.13.0
+
+      # Recomenda-se definir uma URL de banco de dados persistente para produção.
+      # O seu projeto usa SQLite ('sqlite:///blog.sqlite'),
+      # que NÃO é persistente em serviços web do Render e será redefinido a cada deploy.
+      # Para usar um banco de dados persistente (ex: PostgreSQL no Render):
+      # 1. Crie um serviço de banco de dados no Render.
+      # 2. Defina o DATABASE_URL com a URL de conexão do PostgreSQL.
+      #
+      # Exemplo de como você o definiria se estivesse usando um Postgres no Render:
+      # - key: DATABASE_URL
+      #   value: ${sua-url-secreta-do-postgres}
