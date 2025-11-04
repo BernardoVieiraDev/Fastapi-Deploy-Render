@@ -15,10 +15,7 @@ services:
       pip install poetry
       poetry install --no-root
 
-    # Start Command: Inicia o servidor ASGI (Uvicorn)
-    # O formato é: uvicorn <nome_do_modulo>:<instancia_do_app> --host 0.0.0.0 --port $PORT
-    # O módulo principal é 'src.main' e a instância do app é 'app'.
-    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    startCommand: PYTHONPATH=./src uvicorn src.main:app --host 0.0.0.0 --port $PORT
 
     # Variáveis de Ambiente
     envVars:
